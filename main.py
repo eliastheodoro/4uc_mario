@@ -61,24 +61,30 @@ def main():
     code = None
 
     # Carregar as variáveis do arquivo 'tokens.json'
-    loaded_data = carregar_variaveis_do_json(nome_arquivo)
-    access_token = loaded_data.get("access_token")
-    refresh_token = loaded_data.get("refresh_token")
+    def load_tokens_from_file(filename):
+        loaded_data = carregar_variaveis_do_json(filename)
+        access_token = loaded_data.get("access_token")
+        refresh_token = loaded_data.get("refresh_token")
+        return access_token, refresh_token
 
     url = f"https://api.mercadolibre.com/orders/search?seller=1317250329" #
 
+    token = load_tokens_from_file(nome_arquivo)[0]
     headers = {
-    'Authorization': f'Bearer {access_token}'
+    'Authorization': f'Bearer {token}',
     }
 
-    # teste consulta api
+    # carrega arquivo de parametros e faz chamada na api
+    access_token, refresh_token = load_tokens_from_file(nome_arquivo)
     response = requests.request("GET", url, headers=headers)
 
     if response.status_code == 400 or response.status_code == 401 or response.status_code == 401:
         print(response.json())
         print('Regerando Bearer code a partir do refresh token...')
         geraToken(uri, client_id, client_secret, code=code, refresh_token=refresh_token, redirect_uri=redirect_uri)
-        #refaz a chamada na api
+
+        # recarregar o arquivo de parametros e fazer o request novamente
+        access_token, refresh_token = load_tokens_from_file(nome_arquivo)
         response = requests.request("GET", url, headers=headers)
         print(response.json())
 

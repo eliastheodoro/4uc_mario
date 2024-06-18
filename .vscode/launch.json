@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "URI": "https://api.mercadolibre.com/oauth/token",
+                "CLIENT_ID": "1196296498468732",
+                "CLIENT_SECRET": "Ef4utzldvpALfFUygJZdJxzHooRen3Ng",
+                "REDIRECT_URI": "https://www.google.com",
+                "NOME_ARQUIVO": "Z:\\Dados\\OneDrive\\Documentos\\codigo\\4uc_mario\\4uc_mario\\tokens.json",
+                "NOME_ARQUIVO_OUTPUT": "Z:\\Dados\\OneDrive\\Documentos\\codigo\\4uc_mario\\4uc_mario\\out.json"
+            }
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 {
     "python.terminal.activateEnvironment": true,
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-    "python.condaPath": "C:\\Users\\Elias\\anaconda3\\Scripts"
+    "python.condaPath": "C:\\Users\\Elias\\anaconda3\\Scripts",
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }
